@@ -22,16 +22,20 @@ async function listDatabases(client){
 async function createUser(client, user) {
     const result = await client.db("lab2").collection("usuarios").insertOne(user);
 };
+async function countUsuarioDocuments(client) {
+    const result = await client.db("lab2").collection("usuarios").countDocuments();
+    return result;
+};
 function generateRandomArray(length) {
     const randomArray = [];
     for (let i = 0; i < length; i++) {
-      const randomNumber = Math.floor(Math.random() * 10001);
+      const randomNumber = Math.floor(Math.random() * 100001);
       randomArray.push(randomNumber);
     }
     return randomArray;
   }
 async function main(){
-    const uri = "mongodb+srv://alo20172:Manager123@cluster0.sabth1r.mongodb.net/?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://alo20172:Manager123@cluster0.sabth1r.mongodb.net";
     const client = new MongoClient(uri);
     const startDate = new Date('2022-01-01');
     const endDate = new Date('2024-12-31');
@@ -44,7 +48,8 @@ async function main(){
         posible_products = ["Producto 1", "Producto 2", "Producto 3", "Producto 4", "Producto 5", "Producto 6", "Producto 7", "Producto 8", "Producto 9", "Producto 10"]
         posible_colors = ["azul", "rojo", "verde", "morado", "naranja"]
         posible_idiomas = ["spanish", "english", "german", "italian"]
-        for (let k = 0; k < 100000; k++){
+        // console.log( countUsuarioDocuments(client))
+        for (let k =0; k < 150000; k++){
             await createUser(client, {
                 "nombre": "nombre"+k, 
                 "email": "nombre"+k+"@gmail.com", 
@@ -55,8 +60,8 @@ async function main(){
                 "tags":"tag"+k%5, 
                 "archivo":Math.random()<0.5, 
                 "notas":"nota"+k%8, 
-                "visitas":k%10, 
-                "amigos":generateRandomArray(Math.floor(Math.random*1001)), 
+                "visitas":Math.floor(Math.random() * 10001),
+                "amigos":generateRandomArray(Math.floor(Math.random()*1002)), 
                 "preferencias": [{"color":posible_colors[Math.floor(Math.random()*6)],"idioma":posible_idiomas[Math.floor(Math.random()*5)], "tema":"tema"+(k*3)%3},
                 {"color":posible_colors[Math.floor(Math.random()*6)],"idioma":posible_idiomas[Math.floor(Math.random()*5)], "tema":"tema"+(k*3)%5}]
             })
