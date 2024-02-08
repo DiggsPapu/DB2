@@ -1,0 +1,179 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"preferencias.color" : {
+						"$eq" : "azul"
+					}
+				},
+				{
+					"$expr" : {
+						"$gt" : [
+							{
+								"$size" : [ "$amigos" ]
+							},
+							{
+								"$const" : 999
+							}
+						]
+					}
+				}
+			]
+		},
+		"queryHash" : "E38AE453",
+		"planCacheKey" : "4E2AAD34",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"filter" : {
+				"$expr" : {
+					"$gt" : [
+						{
+							"$size" : [ "$amigos" ]
+						},
+						{
+							"$const" : 999
+						}
+					]
+				}
+			},
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"preferencias.color" : 1,
+					"amigos" : 1
+				},
+				"indexName" : "preferencias.color_1_amigos_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"preferencias.color" : [ ],
+					"amigos" : [ "amigos" ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"preferencias.color" : [ "[\"azul\", \"azul\"]" ],
+					"amigos" : [ "[MinKey, MaxKey]" ]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 33,
+		"executionTimeMillis" : 9679,
+		"totalKeysExamined" : 8199052,
+		"totalDocsExamined" : 16616,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"filter" : {
+				"$expr" : {
+					"$gt" : [
+						{
+							"$size" : [ "$amigos" ]
+						},
+						{
+							"$const" : 999
+						}
+					]
+				}
+			},
+			"nReturned" : 33,
+			"executionTimeMillisEstimate" : 880,
+			"works" : 8199053,
+			"advanced" : 33,
+			"needTime" : 8199019,
+			"needYield" : 0,
+			"saveState" : 8202,
+			"restoreState" : 8202,
+			"isEOF" : 1,
+			"docsExamined" : 16616,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 16616,
+				"executionTimeMillisEstimate" : 684,
+				"works" : 8199053,
+				"advanced" : 16616,
+				"needTime" : 8182436,
+				"needYield" : 0,
+				"saveState" : 8202,
+				"restoreState" : 8202,
+				"isEOF" : 1,
+				"keyPattern" : {
+					"preferencias.color" : 1,
+					"amigos" : 1
+				},
+				"indexName" : "preferencias.color_1_amigos_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"preferencias.color" : [ ],
+					"amigos" : [ "amigos" ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"preferencias.color" : [ "[\"azul\", \"azul\"]" ],
+					"amigos" : [ "[MinKey, MaxKey]" ]
+				},
+				"keysExamined" : 8199052,
+				"seeks" : 1,
+				"dupsTested" : 8199052,
+				"dupsDropped" : 8182436
+			}
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"preferencias.color" : "azul",
+			"$expr" : {
+				"$gt" : [
+					{
+						"$size" : "$amigos"
+					},
+					999
+				]
+			}
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

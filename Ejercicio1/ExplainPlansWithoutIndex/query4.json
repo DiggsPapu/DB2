@@ -1,0 +1,141 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"preferencias.color" : {
+						"$eq" : "azul"
+					}
+				},
+				{
+					"$expr" : {
+						"$gt" : [
+							{
+								"$size" : [ "$amigos" ]
+							},
+							{
+								"$const" : 999
+							}
+						]
+					}
+				}
+			]
+		},
+		"queryHash" : "E38AE453",
+		"planCacheKey" : "E38AE453",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"preferencias.color" : {
+							"$eq" : "azul"
+						}
+					},
+					{
+						"$expr" : {
+							"$gt" : [
+								{
+									"$size" : [ "$amigos" ]
+								},
+								{
+									"$const" : 999
+								}
+							]
+						}
+					}
+				]
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 33,
+		"executionTimeMillis" : 458,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 100000,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"preferencias.color" : {
+							"$eq" : "azul"
+						}
+					},
+					{
+						"$expr" : {
+							"$gt" : [
+								{
+									"$size" : [ "$amigos" ]
+								},
+								{
+									"$const" : 999
+								}
+							]
+						}
+					}
+				]
+			},
+			"nReturned" : 33,
+			"executionTimeMillisEstimate" : 120,
+			"works" : 100001,
+			"advanced" : 33,
+			"needTime" : 99967,
+			"needYield" : 0,
+			"saveState" : 100,
+			"restoreState" : 100,
+			"isEOF" : 1,
+			"direction" : "forward",
+			"docsExamined" : 100000
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"preferencias.color" : "azul",
+			"$expr" : {
+				"$gt" : [
+					{
+						"$size" : "$amigos"
+					},
+					999
+				]
+			}
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

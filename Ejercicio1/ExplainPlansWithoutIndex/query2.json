@@ -1,0 +1,147 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"historial_compras" : {
+				"$elemMatch" : {
+					"$and" : [
+						{
+							"producto" : {
+								"$eq" : "Producto 1"
+							}
+						},
+						{
+							"fecha" : {
+								"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+							}
+						},
+						{
+							"fecha" : {
+								"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+							}
+						}
+					]
+				}
+			}
+		},
+		"queryHash" : "4A494214",
+		"planCacheKey" : "4A494214",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"historial_compras" : {
+					"$elemMatch" : {
+						"$and" : [
+							{
+								"producto" : {
+									"$eq" : "Producto 1"
+								}
+							},
+							{
+								"fecha" : {
+									"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+								}
+							},
+							{
+								"fecha" : {
+									"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+								}
+							}
+						]
+					}
+				}
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 209,
+		"executionTimeMillis" : 140,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 100000,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"historial_compras" : {
+					"$elemMatch" : {
+						"$and" : [
+							{
+								"producto" : {
+									"$eq" : "Producto 1"
+								}
+							},
+							{
+								"fecha" : {
+									"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+								}
+							},
+							{
+								"fecha" : {
+									"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+								}
+							}
+						]
+					}
+				}
+			},
+			"nReturned" : 209,
+			"executionTimeMillisEstimate" : 7,
+			"works" : 100001,
+			"advanced" : 209,
+			"needTime" : 99791,
+			"needYield" : 0,
+			"saveState" : 100,
+			"restoreState" : 100,
+			"isEOF" : 1,
+			"direction" : "forward",
+			"docsExamined" : 100000
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"historial_compras" : {
+				"$elemMatch" : {
+					"fecha" : {
+						"$gt" : ISODate("2024-01-31T10:00:00.000-06:00"),
+						"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+					},
+					"producto" : "Producto 1"
+				}
+			}
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

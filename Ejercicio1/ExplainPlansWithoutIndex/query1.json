@@ -1,0 +1,115 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"archivo" : {
+						"$eq" : true
+					}
+				},
+				{
+					"puntos" : {
+						"$gt" : 500
+					}
+				}
+			]
+		},
+		"queryHash" : "8994A4AA",
+		"planCacheKey" : "8994A4AA",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"archivo" : {
+							"$eq" : true
+						}
+					},
+					{
+						"puntos" : {
+							"$gt" : 500
+						}
+					}
+				]
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 47719,
+		"executionTimeMillis" : 112,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 100000,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"archivo" : {
+							"$eq" : true
+						}
+					},
+					{
+						"puntos" : {
+							"$gt" : 500
+						}
+					}
+				]
+			},
+			"nReturned" : 47719,
+			"executionTimeMillisEstimate" : 7,
+			"works" : 100001,
+			"advanced" : 47719,
+			"needTime" : 52281,
+			"needYield" : 0,
+			"saveState" : 100,
+			"restoreState" : 100,
+			"isEOF" : 1,
+			"direction" : "forward",
+			"docsExamined" : 100000
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"puntos" : {
+				"$gt" : 500
+			},
+			"archivo" : true
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

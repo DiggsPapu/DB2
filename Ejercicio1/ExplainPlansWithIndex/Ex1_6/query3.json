@@ -1,0 +1,143 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"tags" : {
+						"$eq" : "tag2"
+					}
+				},
+				{
+					"visitas" : {
+						"$gt" : 100
+					}
+				}
+			]
+		},
+		"queryHash" : "D98E5563",
+		"planCacheKey" : "A4F8E3D2",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"tags" : 1,
+					"visitas" : 1
+				},
+				"indexName" : "tags_1_visitas_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"tags" : [ "tags" ],
+					"visitas" : [ ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"tags" : [ "[\"tag2\", \"tag2\"]" ],
+					"visitas" : [ "(100, inf.0]" ]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 49454,
+		"executionTimeMillis" : 295,
+		"totalKeysExamined" : 49454,
+		"totalDocsExamined" : 49454,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"nReturned" : 49454,
+			"executionTimeMillisEstimate" : 85,
+			"works" : 49455,
+			"advanced" : 49454,
+			"needTime" : 0,
+			"needYield" : 0,
+			"saveState" : 49,
+			"restoreState" : 49,
+			"isEOF" : 1,
+			"docsExamined" : 49454,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 49454,
+				"executionTimeMillisEstimate" : 11,
+				"works" : 49455,
+				"advanced" : 49454,
+				"needTime" : 0,
+				"needYield" : 0,
+				"saveState" : 49,
+				"restoreState" : 49,
+				"isEOF" : 1,
+				"keyPattern" : {
+					"tags" : 1,
+					"visitas" : 1
+				},
+				"indexName" : "tags_1_visitas_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"tags" : [ "tags" ],
+					"visitas" : [ ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"tags" : [ "[\"tag2\", \"tag2\"]" ],
+					"visitas" : [ "(100, inf.0]" ]
+				},
+				"keysExamined" : 49454,
+				"seeks" : 1,
+				"dupsTested" : 49454,
+				"dupsDropped" : 0
+			}
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"tags" : "tag2",
+			"visitas" : {
+				"$gt" : 100
+			}
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

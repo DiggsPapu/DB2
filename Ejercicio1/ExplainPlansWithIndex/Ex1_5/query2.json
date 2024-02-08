@@ -1,0 +1,203 @@
+{
+	"explainVersion" : "1",
+	"queryPlanner" : {
+		"namespace" : "lab2.usuarios",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"historial_compras" : {
+				"$elemMatch" : {
+					"$and" : [
+						{
+							"producto" : {
+								"$eq" : "Producto 1"
+							}
+						},
+						{
+							"fecha" : {
+								"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+							}
+						},
+						{
+							"fecha" : {
+								"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+							}
+						}
+					]
+				}
+			}
+		},
+		"queryHash" : "4A494214",
+		"planCacheKey" : "4A494214",
+		"maxIndexedOrSolutionsReached" : false,
+		"maxIndexedAndSolutionsReached" : false,
+		"maxScansToExplodeReached" : false,
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"filter" : {
+				"historial_compras" : {
+					"$elemMatch" : {
+						"$and" : [
+							{
+								"fecha" : {
+									"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+								}
+							},
+							{
+								"fecha" : {
+									"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+								}
+							},
+							{
+								"producto" : {
+									"$eq" : "Producto 1"
+								}
+							}
+						]
+					}
+				}
+			},
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"historial_compras.fecha" : 1,
+					"historial_compras.producto" : 1
+				},
+				"indexName" : "historial_compras.fecha_1_historial_compras.producto_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"historial_compras.fecha" : [ "historial_compras" ],
+					"historial_compras.producto" : [ "historial_compras" ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"historial_compras.fecha" : [ "(new Date(1706716800000), new Date(1707321600000))" ],
+					"historial_compras.producto" : [ "[\"Producto 1\", \"Producto 1\"]" ]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 209,
+		"executionTimeMillis" : 3,
+		"totalKeysExamined" : 1957,
+		"totalDocsExamined" : 209,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"filter" : {
+				"historial_compras" : {
+					"$elemMatch" : {
+						"$and" : [
+							{
+								"fecha" : {
+									"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+								}
+							},
+							{
+								"fecha" : {
+									"$gt" : ISODate("2024-01-31T10:00:00.000-06:00")
+								}
+							},
+							{
+								"producto" : {
+									"$eq" : "Producto 1"
+								}
+							}
+						]
+					}
+				}
+			},
+			"nReturned" : 209,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 1957,
+			"advanced" : 209,
+			"needTime" : 1747,
+			"needYield" : 0,
+			"saveState" : 1,
+			"restoreState" : 1,
+			"isEOF" : 1,
+			"docsExamined" : 209,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 209,
+				"executionTimeMillisEstimate" : 0,
+				"works" : 1957,
+				"advanced" : 209,
+				"needTime" : 1747,
+				"needYield" : 0,
+				"saveState" : 1,
+				"restoreState" : 1,
+				"isEOF" : 1,
+				"keyPattern" : {
+					"historial_compras.fecha" : 1,
+					"historial_compras.producto" : 1
+				},
+				"indexName" : "historial_compras.fecha_1_historial_compras.producto_1",
+				"isMultiKey" : true,
+				"multiKeyPaths" : {
+					"historial_compras.fecha" : [ "historial_compras" ],
+					"historial_compras.producto" : [ "historial_compras" ]
+				},
+				"isUnique" : false,
+				"isSparse" : false,
+				"isPartial" : false,
+				"indexVersion" : 2,
+				"direction" : "forward",
+				"indexBounds" : {
+					"historial_compras.fecha" : [ "(new Date(1706716800000), new Date(1707321600000))" ],
+					"historial_compras.producto" : [ "[\"Producto 1\", \"Producto 1\"]" ]
+				},
+				"keysExamined" : 1957,
+				"seeks" : 1748,
+				"dupsTested" : 209,
+				"dupsDropped" : 0
+			}
+		}
+	},
+	"command" : {
+		"find" : "usuarios",
+		"filter" : {
+			"historial_compras" : {
+				"$elemMatch" : {
+					"fecha" : {
+						"$gt" : ISODate("2024-01-31T10:00:00.000-06:00"),
+						"$lt" : ISODate("2024-02-07T10:00:00.000-06:00")
+					},
+					"producto" : "Producto 1"
+				}
+			}
+		},
+		"batchSize" : 1000,
+		"projection" : {
+			
+		},
+		"$readPreference" : {
+			"mode" : "primary"
+		},
+		"$db" : "lab2"
+	},
+	"serverInfo" : {
+		"host" : "Diggstop",
+		"port" : 27017,
+		"version" : "7.0.5",
+		"gitVersion" : "7809d71e84e314b497f282ea8aa06d7ded3eb205"
+	},
+	"serverParameters" : {
+		"internalQueryFacetBufferSizeBytes" : 104857600,
+		"internalQueryFacetMaxOutputDocSizeBytes" : 104857600,
+		"internalLookupStageIntermediateDocumentMaxSizeBytes" : 104857600,
+		"internalDocumentSourceGroupMaxMemoryBytes" : 104857600,
+		"internalQueryMaxBlockingSortMemoryUsageBytes" : 104857600,
+		"internalQueryProhibitBlockingMergeOnMongoS" : 0,
+		"internalQueryMaxAddToSetBytes" : 104857600,
+		"internalDocumentSourceSetWindowFieldsMaxMemoryBytes" : 104857600,
+		"internalQueryFrameworkControl" : "trySbeRestricted"
+	},
+	"ok" : 1
+}

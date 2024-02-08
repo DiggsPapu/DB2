@@ -35,7 +35,8 @@ function generateRandomArray(length) {
     return randomArray;
   }
 async function main(){
-    const uri = "mongodb+srv://alo20172:Manager123@cluster0.sabth1r.mongodb.net";
+    // const uri = "mongodb+srv://alo20172:Manager123@cluster0.sabth1r.mongodb.net";
+    const uri = "mongodb://0.0.0.0:27017";
     const client = new MongoClient(uri);
     const startDate = new Date('2022-01-01');
     const endDate = new Date('2024-12-31');
@@ -49,7 +50,7 @@ async function main(){
         posible_colors = ["azul", "rojo", "verde", "morado", "naranja"]
         posible_idiomas = ["spanish", "english", "german", "italian"]
         // console.log( countUsuarioDocuments(client))
-        for (let k =0; k < 150000; k++){
+        for (let k =0; k < 100000; k++){
             await createUser(client, {
                 "nombre": "nombre"+k, 
                 "email": "nombre"+k+"@gmail.com", 
@@ -57,14 +58,13 @@ async function main(){
                 "puntos": Math.floor(Math.random() * 10001), 
                 "historial_compras":[{"producto":posible_products[Math.floor(Math.random()*10)], "fecha": getRandomDate(startDate, endDate)},{"producto":posible_products[Math.floor(Math.random()*10)], "fecha": getRandomDate(startDate, endDate)},{"producto":posible_products[Math.floor(Math.random()*10)], "fecha": getRandomDate(startDate, endDate)}], 
                 "direccion":{"calle":"calle"+k%15, "ciudad":"ciudad"+k%7, "codigo_postal":k%150}, 
-                "tags":"tag"+k%5, 
+                "tags":["tag"+k%5, "tag"+Math.floor(Math.random() * 6) ],
                 "archivo":Math.random()<0.5, 
                 "notas":"nota"+k%8, 
                 "visitas":Math.floor(Math.random() * 10001),
                 "amigos":generateRandomArray(Math.floor(Math.random()*1002)), 
-                "preferencias": [{"color":posible_colors[Math.floor(Math.random()*6)],"idioma":posible_idiomas[Math.floor(Math.random()*5)], "tema":"tema"+(k*3)%3},
-                {"color":posible_colors[Math.floor(Math.random()*6)],"idioma":posible_idiomas[Math.floor(Math.random()*5)], "tema":"tema"+(k*3)%5}]
-            })
+                "preferencias": {"color":posible_colors[Math.floor(Math.random()*6)],"idioma":posible_idiomas[Math.floor(Math.random()*5)], "tema":"tema"+(k*3)%3}
+            });
         };
     } catch (e) {
         console.error(e);
