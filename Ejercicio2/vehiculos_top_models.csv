@@ -1,0 +1,21 @@
+_id,id,brand,model,price,year
+ObjectId(65c1a2e254d6206316ccf2d5),276,Dodge,Grand Caravan,$29988.13,1997
+ObjectId(65c1a2e254d6206316ccf280),186,Mazda,Protege,$29969.05,1994
+ObjectId(65c1a2e254d6206316ccf41e),605,Ford,Aerostar,$29938.16,1990
+ObjectId(65c1a2e254d6206316ccf57b),954,Mazda,B-Series,$29914.93,1991
+ObjectId(65c1a2e254d6206316ccf252),145,Volkswagen,Cabriolet,$29913.70,1991
+ObjectId(65c1a2e254d6206316ccf530),872,Chevrolet,Malibu,$29884.29,1998
+ObjectId(65c1a2e254d6206316ccf3d4),507,Lincoln,Continental,$29849.33,1998
+ObjectId(65c1a2e254d6206316ccf526),847,Isuzu,Amigo,$29842.58,1999
+ObjectId(65c1a2e254d6206316ccf222),90,Toyota,MR2,$29821.23,1994
+ObjectId(65c1a2e254d6206316ccf47e),701,Volkswagen,rio,$29782.08,1998
+ObjectId(65c1a2e254d6206316ccf54a),879,Saab,9000,$29670.84,1999
+ObjectId(65c1a2e254d6206316ccf4b5),744,Pontiac,Grand Am,$29599.30,1994
+ObjectId(65c1a2e254d6206316ccf473),688,Buick,Riviera,$29586.95,1999
+ObjectId(65c1a2e254d6206316ccf322),353,Dodge,Shadow,$29549.25,1992
+ObjectId(65c1a2e254d6206316ccf3dc),539,Dodge,Daytona,$29542.29,1992
+ObjectId(65c1a2e254d6206316ccf519),856,Ford,Bronco,$29493.53,1991
+ObjectId(65c1a2e254d6206316ccf563),930,Mercury,Tracer,$29333.25,1994
+ObjectId(65c1a2e254d6206316ccf4dd),796,Acura,NSX,$29319.81,1995
+ObjectId(65c1a2e254d6206316ccf4fe),823,Land Rover,Discovery,$29173.14,1998
+ObjectId(65c1a2e254d6206316ccf57e),957,Plymouth,Neon,$29164.44,1995
