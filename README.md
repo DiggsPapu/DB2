@@ -1,2 +1,3 @@
-# DB2
-Repositorio para almacenar todo el curso de base de datos 2 en la UVG.
+# Quiz1
+Se realizó el parcial 1 de mongodb.
+Las preguntas están ahí y esperablemente sea 100.
