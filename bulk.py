@@ -4,6 +4,7 @@ import requests
 from pymongo import MongoClient
 from pymongo.errors import BulkWriteError
 
+
 mongo_uri = 'mongodb+srv://admin:admin@cluster0.9y482gd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 db_name = "filmy"
 collection_name = "movies"
