@@ -12,3 +12,27 @@ Este es la branch en la cuál se realizó el laboratorio 5 de Neo4j.
     Es importante analizar la información de esta manera por varias razones, entre las que están:
     * Ver una  aproximación de cómo es que está conectada la data.
     * Visualizar patrones sobre la data que podríamos analizar ya en código.
+
+## Ejercicio 2 - Interacciones con Cypher
+* Cree un nodo nuevo de tipo persona con el nombre del actor Michael Caine. Utilice la sentencia MERGE para evitar crear nodos duplicados.
+![alt text](image-2.png)
+* Verifique que se haya creado el nodo con la sentencia MATCH.
+![alt text](image-3.png)
+* También puede utilizar muchas sentencias merge dentro de un mismo query de cypher. Ejecute la siguiente sentencia: 
+    _MERGE (p:Person {name: 'Katie Holmes'})
+    MERGE (m:Movie {title: 'The Dark Knight'})
+    RETURN p, m_
+![alt text](image-4.png)
+* Como se revisó en la sesión, se podrá utilizar la sentencia MERGE también para crear relaciones. Cree una relación ACTED_IN para el actor Michael Caine y la película The Dark Night.
+![alt text](image-5.png)
+* Verifique que esa relación existe.
+![alt text](image-6.png)
+* Ahora, unifique los conocimientos del paso 3 y resto de pasos para que, con una misma sentencia, utilice una cadena de comandos MERGE
+para crear un nodo persona con el nombre Chadwick Boseman, un nodo de tipo película con el título Black Panther y la relación ACTED_IN.
+![alt text](image-7.png)
+* Confirme que la relación haya funcionado.
+![alt text](image-8.png)
+* Ahora, con el resultado del comando anterior (paso 6), modifique el query para que en una misma consulta MERGE cree un nodo persona (Emily Blunt), un nodo película (A Quiet Place) y la relación ACTED_IN.
+![alt text](image-9.png)
+Verificando la creación del nodo.
+![alt text](image-10.png)
