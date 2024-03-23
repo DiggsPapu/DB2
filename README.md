@@ -36,3 +36,29 @@ para crear un nodo persona con el nombre Chadwick Boseman, un nodo de tipo pelí
 ![alt text](image-9.png)
 Verificando la creación del nodo.
 ![alt text](image-10.png)
+
+## Ejercicio 3 - Consultar Datos con Cypher
+* Verifique si la película Batman Begins existe. Cree una relación ACTED_IN entre Michael Caine y dicha película en cuya relación Michael Caine tuvo el rol de Alfred Penny.
+![alt text](image-11.png)
+No existe la película.
+![alt text](image-15.png)
+Cree la película y generé la relación entre Michael Caine y Batman Begins.
+![alt text](image-12.png)
+Verificando que sale en la lista de películas actuadas de Michael Caine.
+* Ahora, como usted es un amante del cine, sabe que este mismo actor también tuvo el mismo rol con la película The Dark Knight. Agregue el rol a esta relación de la misma manera.
+![alt text](image-25.png)
+* Ahora, actualice también dicha relación para la misma película y el mismo actor en donde agregue que el año de esa actuación fue en 2008
+![alt text](image-26.png)
+* Se dio cuenta que realmente por el volumen de películas que hay, será bastante laborioso el actualizar los roles de todos los actores que actuaron en la película. De esta manera, elimine el rol de Michael Caine con la película The Dark Knight utilizando la función REMOVE.
+![alt text](image-27.png)
+* Ahora, agregue un nuevo nodo persona Jane Doe con una relación de ACTED_IN a la película de The Matrix.
+![alt text](image-21.png)
+Verificando su creación es:
+![alt text](image-20.png)
+* ¿Qué otras personas tienen esta relación con dicha película?
+De manera que algunas personas relacionadas con la película son 
+![alt text](image-23.png)
+* Basado en sus conocimientos, sabe que Tom Cruise ha estado muy involucrado en muchas películas, no solo desde el rol de actor sino como de director. Verifique si esto es cierto, ejemplificando todas las relaciones que tiene este con todas las películas.
+![alt text](image-24.png)
+*  Para cerrar con broche de oro, elimine todo en la base de datos de prueba.
+![alt text](image-28.png)

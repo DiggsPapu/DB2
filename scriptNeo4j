@@ -1,0 +1,79 @@
+
+
+MERGE (MichaelCaine:Person {name: 'Michael Caine', born: 1933, tagline:"Some men just want to watch the world burn."})
+RETURN MichaelCaine;
+
+MATCH (p:Person)
+WHERE p.name = 'Michael Caine'
+RETURN p;
+
+MERGE (p:Person {name: 'Katie Holmes'})
+MERGE (m:Movie {title: 'The Dark Knight'})
+RETURN p, m;
+
+
+MATCH (person:Person {name:'Michael Caine'}), (movie:Movie{title:'The Dark Knight'})
+MERGE (person)-[:ACTED_IN {roles:['Alfred Pennyworth']}]->(movie)
+RETURN person, movie;
+
+MATCH(person:Person)-[:ACTED_IN]->(movie:Movie{title:'The Dark Knight'})
+RETURN person, movie;
+
+MERGE (person:Person {name:'Chadwick Boseman'})
+MERGE (movie:Movie{title:'Black Panther'})
+MERGE (person)-[:ACTED_IN {roles:['Czama Pantera']}]->(movie)
+RETURN person, movie;
+
+MATCH(person:Person)-[:ACTED_IN]->(movie:Movie{title:'Black Panther'})
+RETURN person, movie;
+
+MERGE (person:Person {name:'Emily Blunt'})
+MERGE (movie:Movie{title:'A Quiet Place'})
+MERGE (person)-[:ACTED_IN {roles:['Evelyn Abbott']}]->(movie)
+RETURN person, movie;
+
+MATCH(person:Person)-[:ACTED_IN]->(movie:Movie{title:'A Quiet Place'})
+RETURN person, movie;
+
+match(person:Person), (movie:Movie) where person.name = "Michael Caine"
+    MERGE (person)-[:ACTED_IN]->(movie)
+    return movie, person;
+
+MATCH (batmanB:Movie) where batmanB.title = 'Batman Begins'
+    return batmanB;
+
+match (alfred:Person) where alfred.name = 'Michael Caine' and alfred.born = 1933
+merge (batmanB:Movie {title:'Batman Begins', released:2005, tagline:'This Summer, evil fears the knight.'})
+MERGE (alfred)-[:ACTED_IN {roles:['Alfred Pennyworth']}]->(batmanB)
+    return batmanB, alfred;
+
+
+match(person:Person), (movie:Movie) where person.name = "Michael Caine"
+    MERGE (person)-[:ACTED_IN]->(movie)
+    return movie, person;
+
+match(batmanB:Movie)<-[:ACTED_IN]-(person:Person) where batmanB.title = 'Batman Begins'
+    return batmanB, person;
+
+match (alfred:Person)-[:ACTED_IN]->(batmanB:Movie) where alfred.name='Michael Caine' and batmanB.title = 'Batman Begins'
+    merge (alfred)-[:ACTED_IN]->(theDarkKnight:Movie {title:'The Dark Knight'})
+return alfred, batmanB, theDarkKnight;
+
+match (alfred:Person)-[:ACTED_IN]->(batmanB:Movie) where alfred.name='Michael Caine' and batmanB.title = 'The Dark Knight'
+return alfred, batmanB
+
+MATCH (alfred:Person)-[acting:ACTED_IN {roles:['Alfred Pennyworth']}]->(batmanB:Movie) where batmanB.title = 'The Dark Knight'
+    remove acting.roles
+return alfred, batmanB
+
+match (TheMatrix:Movie) where TheMatrix.title = 'The Matrix'
+merge (janeDoe:Person{name:'Jane Doe'})
+merge (janeDoe)-[:ACTED_IN]->(TheMatrix)
+
+match(movie:Movie)<-[:ACTED_IN|DIRECTED|FOLLOWS|PRODUCED|WROTE|REVIEWED]-(person:Person) where movie.title = 'The Matrix'
+    return movie, person
+    
+match(movie:Movie)<-[:ACTED_IN|DIRECTED|FOLLOWS|PRODUCED|WROTE|REVIEWED]-(person:Person) where person.name = 'Tom Cruise'
+    return movie, person
+MATCH (n)
+DETACH DELETE n;
