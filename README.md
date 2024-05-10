@@ -37,5 +37,10 @@ hdfs dfs -mkdir -p dir1/dir2/dir3
 hdfs dfs -ls dir1
 ![alt text](image-12.png)
 
-hdfs dfs -ls /
+hdfs dfs -ls /user/cloudera/dir1
 ![alt text](image-13.png)
+
+hdfs dfs -ls -R
+![alt text](image-14.png)
+
+## EJERCICIO 03
